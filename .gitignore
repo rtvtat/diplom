@@ -3,7 +3,8 @@ Thumbs.db*
 HELP.md
 .gradle
 build/
-
+data/
+gate-simulator/node_modules/
 ### STS ###
 .apt_generated
 .classpath
