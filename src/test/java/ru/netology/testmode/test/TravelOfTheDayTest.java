@@ -29,7 +29,7 @@ public class TravelOfTheDayTest {
 
 
     @Test
-    @DisplayName("Оплата картой")
+    @DisplayName("Оплата подтвержденной картой ")
     void paymentCardTestSuccess() {
         TravelPage page = new TravelPage();
         page.clickPayment();
@@ -55,7 +55,7 @@ public class TravelOfTheDayTest {
     }
 
     @Test
-    @DisplayName("Покупка в кредит")
+    @DisplayName("Покупка в кредит подтвержденной картой")
     void paymentCreditTestSuccess() {
         TravelPage page = new TravelPage();
         page.clickCredit();
@@ -83,7 +83,7 @@ public class TravelOfTheDayTest {
     }
 
     @Test
-    @DisplayName("Оплата не существующей картой")
+    @DisplayName("Оплата несуществующей картой")
     void paymentNotExistsCardTestSuccess() {
         OrderEntity orderBefore = DBHelper.getOrder();
         TravelPage page = new TravelPage();
@@ -99,18 +99,6 @@ public class TravelOfTheDayTest {
     }
 
     // тесты валидации полей
-    @Test
-    @DisplayName("ввод неполного номера карты")
-    void incompleteCardNumberTest() {
-        TravelPage page = new TravelPage();
-        page.clickPayment();
-        DataHelper.CardInfo cardInfo = DataHelper.getAproverCard();
-        cardInfo.setNumber("0000 0000 0000 000");
-        page.sendData(cardInfo);
-
-        page.clickContinueButton();
-        page.shouldBeVisibleErrorCardNumber();
-    }
 
     @Nested
     public class PaymentFormValidation {
@@ -131,6 +119,19 @@ public class TravelOfTheDayTest {
             page.shouldBeVisibleErrorYear();
             page.shouldBeVisibleErrorOwner();
             page.shouldBeVisibleErrorCvc();
+        }
+
+        @Test
+        @DisplayName("ввод неполного номера карты")
+        void incompleteCardNumberTest() {
+            TravelPage page = new TravelPage();
+            page.clickPayment();
+            DataHelper.CardInfo cardInfo = DataHelper.getAproverCard();
+            cardInfo.setNumber("0000 0000 0000 000");
+            page.sendData(cardInfo);
+
+            page.clickContinueButton();
+            page.shouldBeVisibleErrorCardNumber();
         }
 
         @Test
@@ -270,6 +271,19 @@ public class TravelOfTheDayTest {
             page.shouldBeVisibleErrorYear();
             page.shouldBeVisibleErrorOwner();
             page.shouldBeVisibleErrorCvc();
+        }
+
+        @Test
+        @DisplayName("ввод неполного номера карты")
+        void incompleteCardNumberTest() {
+            TravelPage page = new TravelPage();
+            page.clickPayment();
+            DataHelper.CardInfo cardInfo = DataHelper.getAproverCard();
+            cardInfo.setNumber("0000 0000 0000 000");
+            page.sendData(cardInfo);
+
+            page.clickContinueButton();
+            page.shouldBeVisibleErrorCardNumber();
         }
 
         @Test

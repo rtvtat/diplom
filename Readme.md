@@ -1,14 +1,41 @@
-#запуск тестов с использованием mysql
-docker-compose up -d --force-recreate -e TYPE=mysql
-# запуск тестов с использованием postgres
-docker-compose up -d --force-recreate -e TYPE=mysql
+#### Дипломный проект Автоматизация тестирования
 
-#остановка
-docker-compose down
 
-docker run -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/db_shop -e SPRING_DATASOURCE_USERNAME=postgres -e SPRING_DATASOURCE_PASSWORD=asdvbn123 -e SPRING_JPA_DATABASE=POSTGRESQL -p 8080:8080 aqa-shop
+Настройка окруженияя
+1. установка docker и docker-compose
+1. убедитесь, что порты 8080, 9999 и 5436 или 3306 свободны
 
-#старт 
-java -jar ./artifacts/aqa-shop.jar -Dspring.profiles.active=localpg
-java -jar ./artifacts/aqa-shop.jar -Dspring.profiles.active=mysql
-java -jar ./artifacts/aqa-shop.jar -Dspring.profiles.active=postgres
+
+Инструкции по установке
+1. скачать исходники
+1. запустить контейнеры командой 
+    для случая, когда проверяем на бд postgresql:
+        
+        docker-compose -f docker-compose.yml up -d --force-recreate
+    остановить контейнеры можно командой
+    
+        docker-compose -f docker-compose.yml down
+    для случая, когда проверяем на бд mysql
+    
+        docker-compose -f docker-compose-mysql.yml up -d --force-recreate
+    остановить контейнеры можно командой
+    
+        docker-compose -f docker-compose-mysql.yml down
+        
+    логи сервисов можно посмотреть
+    
+        docker-compose logs
+
+1. Запуск тестов производится командой:
+
+        gradlew clean test allureReport
+
+    запуск в headless-режиме (без открытия браузера
+    
+        gradlew clean test allureReport -Dheadless=true
+
+1. Просмотра отчета Allure в осуществляется командой
+
+        gradlew allureServe
+
+    
