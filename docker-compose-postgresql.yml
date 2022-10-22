@@ -30,3 +30,5 @@ services:
       - SPRING_DATASOURCE_USERNAME=dbuser
       - SPRING_DATASOURCE_PASSWORD=asdvbn123
       - SPRING_JPA_DATABASE=POSTGRESQL
+      - SPRING_CREDIT_GATE_URL=http://gate-simulator:9999/credit
+      - SPRING_PAYMENT_GATE_URL=http://gate-simulator:9999/payment

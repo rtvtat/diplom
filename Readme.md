@@ -24,7 +24,8 @@
         
     логи сервисов можно посмотреть
     
-        docker-compose logs
+        docker-compose -f docker-compose-postgresql.yml logs
+        docker-compose -f  docker-compose-mysql.yml logs
 
 1. Запуск тестов производится командой:
 
