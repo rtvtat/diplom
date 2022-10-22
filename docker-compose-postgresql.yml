@@ -2,7 +2,7 @@ version: '3.7'
 services:
 
   gate-simulator:
-    build: .
+    build: gate-simulator/
     image: gate-simulator:1.0
     ports:
       - '9999:9999'
@@ -19,6 +19,7 @@ services:
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=asdvbn123
   app-shop:
+    build: artifacts/
     image: aqa-shop:latest
     depends_on:
       - postgresql

@@ -11,10 +11,10 @@
 1. запустить контейнеры командой 
     для случая, когда проверяем на бд postgresql:
         
-        docker-compose -f docker-compose.yml up -d --force-recreate
+        docker-compose -f docker-compose-postgresql.yml up -d --force-recreate
     остановить контейнеры можно командой
     
-        docker-compose -f docker-compose.yml down
+        docker-compose -f docker-compose-postgresql.yml down
     для случая, когда проверяем на бд mysql
     
         docker-compose -f docker-compose-mysql.yml up -d --force-recreate

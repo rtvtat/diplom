@@ -13,7 +13,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TravelPage {
+public class TravelPagePayment {
     private final SelenideElement buyButton = $(byText("Купить"));
     private final SelenideElement buyHeader = $(byText("Оплата по карте"));
 
@@ -104,7 +104,8 @@ public class TravelPage {
     private List<SelenideElement> listElement = $$("li.list__item");
 
 
-    public TravelPage() {
+    public TravelPagePayment() {
+        clickPayment();
 //        h2.shouldBe(Condition.visible, Duration.ofSeconds(5));
     }
 
