@@ -104,7 +104,7 @@ public class TravelPageCredit {
 
 
     public TravelPageCredit() {
-        clickPayment();
+        clickCredit();
 //        h2.shouldBe(Condition.visible, Duration.ofSeconds(5));
     }
 
